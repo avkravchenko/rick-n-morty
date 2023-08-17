@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  gap: 1rem;
+  border-radius: 1rem;
+  filter: drop-shadow(2px 2px 5px #e2e2e2);
+  padding: 1rem;
+  max-width: 200px;
+  min-width: 200px;
+  max-height: 300px;
+  min-height: 300px;
+
+  .card__img-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card__img {
+    width: 100%;
+    border-radius: 12rem;
+  }
+
+  .card__description {
+    text-align: center;
+  }
+}
