@@ -1,7 +1,14 @@
+.results-wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .results {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   justify-content: center;
 }

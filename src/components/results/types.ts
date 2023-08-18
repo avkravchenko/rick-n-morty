@@ -1,4 +1,4 @@
-export interface Character {
+export interface characterTypes {
   created: string;
   episode: [];
   gender: string;

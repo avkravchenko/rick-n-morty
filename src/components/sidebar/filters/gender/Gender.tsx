@@ -12,7 +12,6 @@ const Gender: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    console.log(searchParams.get("gender"));
     const gender: string = searchParams.get("gender") || "";
     setValue(gender);
   }, []);

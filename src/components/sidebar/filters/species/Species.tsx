@@ -38,7 +38,7 @@ const Species: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <form>
         <FormControl component="fieldset">
           <FormLabel component="legend">Species</FormLabel>
@@ -59,7 +59,7 @@ const Species: React.FC = () => {
           </RadioGroup>
         </FormControl>
       </form>
-    </div>
+    </>
   );
 };
 
