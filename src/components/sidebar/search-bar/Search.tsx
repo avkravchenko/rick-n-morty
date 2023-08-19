@@ -21,9 +21,9 @@ const Search = () => {
     setSearchParams((searchParams) => {
       searchParams.set("name", inputValue);
       searchParams.delete("episode");
-
       return searchParams;
     });
+    setInputValue("");
   };
 
   return (

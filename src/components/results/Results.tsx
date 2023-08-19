@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getAllCharacters } from "../../api/getAllCharacters";
 import Pagination from "@mui/material/Pagination";
 import Card from "../card/Card";
@@ -57,9 +57,16 @@ const Results: React.FC = () => {
     <div className="results-wrapper">
       <div className="results">
         {data?.results.map((char: characterTypes) => (
-          <Card key={char.id} char={char} />
+          <Link
+            key={char.id}
+            to={`/characters/${char.id}`}
+            className="card-link"
+          >
+            <Card char={char} />
+          </Link>
         ))}
       </div>
+
       <Pagination
         count={data?.info.pages}
         page={+page}

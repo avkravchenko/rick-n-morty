@@ -8,12 +8,14 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Results from "./components/results/Results";
 import { Routes, Route } from "react-router-dom";
 import Episodes from "./components/episodes/Episodes";
+import CharacterDetails from "./components/character-details/CharacterDetails";
 
 const queryClient = new QueryClient();
 
 const Characters: React.FC = () => {
   return (
     <>
+      <Search />
       <SideBar />
       <Results />
     </>
@@ -25,9 +27,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="app">
         <Header />
-        <Search />
         <Routes>
           <Route path="/" element={<Characters />} />
+          <Route path="/characters/:id" element={<CharacterDetails />} />
           <Route path="/episodes" element={<Episodes />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />

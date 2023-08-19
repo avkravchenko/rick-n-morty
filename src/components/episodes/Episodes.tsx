@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { getAllEpisodes } from "../../api/getAllEpisodes";
@@ -7,6 +7,8 @@ import Pagination from "@mui/material/Pagination";
 import { episodeTypes } from "./types";
 import "./episodes.scss";
 import SelectEpisode from "./select-episode/SelectEpisode";
+import CircularProgress from "@mui/material/CircularProgress";
+import Search from "../sidebar/search-bar/Search";
 
 const Episodes: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -77,8 +79,12 @@ const Episodes: React.FC = () => {
 
   useEffect(() => {
     setSearchParams((searchParams) => {
-      searchParams.set("name", name);
-      searchParams.set("episode", episode);
+      if (name !== "") {
+        searchParams.set("name", name);
+      }
+      if (episode !== "") {
+        searchParams.set("episode", episode);
+      }
       searchParams.set("page", page);
       return searchParams;
     });
@@ -87,10 +93,10 @@ const Episodes: React.FC = () => {
   useEffect(() => {
     setSearchParams((searchParams) => {
       if (episode !== "") {
-        searchParams.set("name", ""); // Reset the name value if episode is set
+        searchParams.delete("name");
       } else if (name !== "") {
-        searchParams.set("episode", ""); // Reset the episode value if name is set
-        searchParams.set("page", "1"); // Reset the episode value if name is set
+        searchParams.delete("episode");
+        searchParams.set("page", "1");
       }
       return searchParams;
     });
@@ -98,8 +104,9 @@ const Episodes: React.FC = () => {
 
   useEffect(() => {
     setSearchParams((searchParams) => {
-      searchParams.set("name", name);
-
+      if (name !== "") {
+        searchParams.set("name", name);
+      }
       return searchParams;
     });
   }, [episode]);
@@ -112,7 +119,7 @@ const Episodes: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <CircularProgress />;
   }
 
   if (isError) {
@@ -121,6 +128,7 @@ const Episodes: React.FC = () => {
 
   return (
     <div className="episodes-wrapper">
+      <Search />
       <SelectEpisode totalCount={allEpisodes} />
       <div className="episodes">
         {data?.results.map((episode: episodeTypes) => (
