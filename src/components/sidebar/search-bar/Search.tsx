@@ -8,7 +8,6 @@ const Search = () => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    console.log(searchParams.get("status"));
     const name: string = searchParams.get("name") || "";
     setInputValue(name);
   }, []);
@@ -19,9 +18,10 @@ const Search = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //setSearchParams({ name: inputValue });
     setSearchParams((searchParams) => {
       searchParams.set("name", inputValue);
+      searchParams.delete("episode");
+
       return searchParams;
     });
   };
