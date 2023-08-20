@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,18 +7,11 @@ import FormLabel from "@mui/material/FormLabel";
 import { useSearchParams } from "react-router-dom";
 
 const Status: React.FC = () => {
-  const status = ["alive", "dead", "unknown"];
-  const [value, setValue] = useState<string>("");
+  const statusArr = ["alive", "dead", "unknown"];
   const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    console.log(searchParams.get("status"));
-    const status: string = searchParams.get("status") || "";
-    setValue(status);
-  }, []);
+  const status: string = searchParams.get("status") || "";
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
     setSearchParams((searchParams) => {
       searchParams.set("status", event.target.value);
       return searchParams;
@@ -33,10 +26,10 @@ const Status: React.FC = () => {
           <RadioGroup
             aria-label="status"
             name="status"
-            value={value}
+            value={status}
             onChange={handleChange}
           >
-            {status.map((item, index) => (
+            {statusArr.map((item, index) => (
               <FormControlLabel
                 key={item + index}
                 value={item}

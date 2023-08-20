@@ -4,15 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getOneEpisode } from "../../api/getOneEpisode";
 import { characterTypes } from "../results/types";
-import axios from "axios";
+import Card from "../card/Card";
+import "./episode-details.scss";
 
-type Props = {};
-
-const EpisodeDetails: React.FC = (props: Props) => {
+const EpisodeDetails: React.FC = () => {
   const { id } = useParams();
-  const [characters, setCharacters] = useState<characterTypes[]>([]);
   const parsedId = id?.toString() ?? "";
-
   const { data, isLoading, isError } = useQuery(
     ["episode", parsedId],
     () => getOneEpisode(parsedId),
@@ -20,23 +17,6 @@ const EpisodeDetails: React.FC = (props: Props) => {
       keepPreviousData: true,
     }
   );
-
-  useEffect(() => {
-    const promisesArray = data?.characters.map((endpoint: string) =>
-      axios.get(endpoint)
-    );
-
-    Promise.all(promisesArray)
-      .then((responses) => {
-        const charactersData = responses.map((response) => response.data);
-        setCharacters((prev) => [...prev, ...charactersData]);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [data]);
-
-  console.log(characters);
 
   if (isLoading) {
     return <CircularProgress />;
@@ -46,10 +26,21 @@ const EpisodeDetails: React.FC = (props: Props) => {
     return <p>Error loading data</p>;
   }
   return (
-    <div>
-      <h2>{data?.name}</h2>
-      <p>Air date: {data?.air_date}</p>
-      <p>Episode: {data?.episode}</p>
+    <div className="episode-details">
+      <h2>{data?.originalData.name}</h2>
+      <p>Air date: {data?.originalData.air_date}</p>
+      <p>Episode: {data?.originalData.episode}</p>
+      <div className="episode-chars">
+        {data?.characters.map((char: characterTypes) => (
+          <Link
+            key={char.id}
+            to={`/characters/${char.id}`}
+            className="card-link"
+          >
+            <Card char={char} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

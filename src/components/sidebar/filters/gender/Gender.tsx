@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,17 +7,11 @@ import FormLabel from "@mui/material/FormLabel";
 import { useSearchParams } from "react-router-dom";
 
 const Gender: React.FC = () => {
-  const gender = ["male", "female", "unknown", "genderless"];
-  const [value, setValue] = useState<string>("");
+  const genderArr = ["male", "female", "unknown", "genderless"];
   const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    const gender: string = searchParams.get("gender") || "";
-    setValue(gender);
-  }, []);
+  const gender: string = searchParams.get("gender") || "";
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
     setSearchParams((searchParams) => {
       searchParams.set("gender", event.target.value);
       return searchParams;
@@ -32,10 +26,10 @@ const Gender: React.FC = () => {
           <RadioGroup
             aria-label="gender"
             name="gender"
-            value={value}
+            value={gender}
             onChange={handleChange}
           >
-            {gender.map((item, index) => (
+            {genderArr.map((item, index) => (
               <FormControlLabel
                 key={item + index}
                 value={item}

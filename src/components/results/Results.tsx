@@ -7,6 +7,7 @@ import Card from "../card/Card";
 import CircularProgress from "@mui/material/CircularProgress";
 import { characterTypes } from "./types";
 import "./results.scss";
+import Clear from "../clear/Clear";
 
 const Results: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -55,6 +56,7 @@ const Results: React.FC = () => {
 
   return (
     <div className="results-wrapper">
+      <Clear name={name} status={status} gender={gender} species={species} />
       <div className="results">
         {data?.results.map((char: characterTypes) => (
           <Link

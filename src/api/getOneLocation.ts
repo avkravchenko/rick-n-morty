@@ -12,17 +12,17 @@ async function fetchCharacterData(endpoint: string) {
   }
 }
 
-export async function getOneEpisode(id: string) {
+export async function getOneLocation(id: string) {
   try {
-    const episodeResponse = await instance.get(`/episode/${id}`);
-    const episodeData = episodeResponse.data;
-    const characterEndpoints = episodeData.characters;
+    const locationResponse = await instance.get(`/location/${id}`);
+    const locationData = locationResponse.data;
+    const locationEndpoints = locationData.residents;
 
-    const characterPromises = characterEndpoints.map(fetchCharacterData);
+    const characterPromises = locationEndpoints.map(fetchCharacterData);
     const characterData = await Promise.all(characterPromises);
 
     return {
-      originalData: episodeData,
+      originalData: locationData,
       characters: characterData,
     };
   } catch (error) {

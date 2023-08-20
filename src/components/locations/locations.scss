@@ -1,0 +1,21 @@
+.locations-wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .selects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .locations {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+}

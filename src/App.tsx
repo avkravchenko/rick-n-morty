@@ -10,6 +10,8 @@ import { Routes, Route } from "react-router-dom";
 import Episodes from "./components/episodes/Episodes";
 import CharacterDetails from "./components/character-details/CharacterDetails";
 import EpisodeDetails from "./components/episode-details/EpisodeDetails";
+import Locations from "./components/locations/Locations";
+import LocationDetails from "./components/location-details/LocationDetails";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,8 @@ function App() {
           <Route path="/characters/:id" element={<CharacterDetails />} />
           <Route path="/episodes" element={<Episodes />} />
           <Route path="/episodes/:id" element={<EpisodeDetails />} />
+          <Route path="/locations" element={<Locations />} />
+          <Route path="/locations/:id" element={<LocationDetails />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </div>
