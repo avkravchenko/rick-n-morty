@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getAllEpisodes } from "../../api/getAllEpisodes";
 import EpisodeCard from "./EpisodeCard";
 import Pagination from "@mui/material/Pagination";
@@ -132,7 +132,9 @@ const Episodes: React.FC = () => {
       <SelectEpisode totalCount={allEpisodes} />
       <div className="episodes">
         {data?.results.map((episode: episodeTypes) => (
-          <EpisodeCard key={episode.id} episode={episode} />
+          <Link to={`/episodes/${episode.id}`}>
+            <EpisodeCard key={episode.id} episode={episode} />
+          </Link>
         ))}
       </div>
       <Pagination

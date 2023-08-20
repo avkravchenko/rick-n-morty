@@ -9,6 +9,7 @@ import Results from "./components/results/Results";
 import { Routes, Route } from "react-router-dom";
 import Episodes from "./components/episodes/Episodes";
 import CharacterDetails from "./components/character-details/CharacterDetails";
+import EpisodeDetails from "./components/episode-details/EpisodeDetails";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<Characters />} />
           <Route path="/characters/:id" element={<CharacterDetails />} />
           <Route path="/episodes" element={<Episodes />} />
+          <Route path="/episodes/:id" element={<EpisodeDetails />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </div>

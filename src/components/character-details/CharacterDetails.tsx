@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getOneCharacter } from "../../api/getOneCharacter";
 import "./character-details.scss";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const CharacterDetails: React.FC = () => {
   const { id } = useParams();
@@ -15,6 +16,14 @@ const CharacterDetails: React.FC = () => {
       keepPreviousData: true,
     }
   );
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
+
+  if (isError) {
+    return <p>Error loading data</p>;
+  }
 
   return (
     <div className="character-details">
