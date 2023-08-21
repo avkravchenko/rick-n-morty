@@ -7,10 +7,11 @@ import Pagination from "@mui/material/Pagination";
 import { locationTypes } from "./locationType";
 import LocationCard from "./LocationCard";
 import "./locations.scss";
-import Search from "../sidebar/search-bar/Search";
+import Search from "../search-bar/Search";
 import SelectType from "./select-type/SelectType";
 import SelectDimension from "./select-dimension/SelectDimension";
 import Clear from "../clear/Clear";
+import "../../common-styles/common-styles.scss";
 
 const Locations: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -47,14 +48,14 @@ const Locations: React.FC = () => {
 
   console.log(data);
   return (
-    <div className="locations-wrapper">
+    <div className="section-wrapper">
       <Search />
       <div className="selects">
         <SelectType />
         <SelectDimension />
       </div>
       <Clear name={name} type={type} dimension={dimension} />
-      <div className="locations">
+      <div className="section-results">
         {data?.results.map((location: locationTypes) => (
           <Link key={location.id} to={`/locations/${location.id}`}>
             <LocationCard location={location} />

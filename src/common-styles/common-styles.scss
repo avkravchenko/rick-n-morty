@@ -1,0 +1,56 @@
+.section-wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .section-results {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+}
+
+.section-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(
+    to right top,
+    #0468ff,
+    #0096ff,
+    #00b8ff,
+    #00d4ee,
+    #12ebd3
+  );
+  color: #fff;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 200px;
+  min-width: 200px;
+  min-height: 250px;
+  max-height: 250px;
+}
+
+.section-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+
+  .section-chars {
+    max-width: 1440px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem;
+    display: flex;
+  }
+}

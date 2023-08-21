@@ -6,17 +6,11 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useSearchParams } from "react-router-dom";
 import { allLocationTypes } from "../allLocationTypes";
 
-/* interface SelectEpisodeProps {
-  totalCount: string[];
-} */
-
-const SelectType: React.FC /* <SelectEpisodeProps> */ = () => {
-  //const [episode, setEpisode] = useState<string>("");
+const SelectType: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const type: string = searchParams.get("type") ?? "";
 
   const handleChange = (event: SelectChangeEvent) => {
-    //setEpisode(event.target.value as string);
     setSearchParams((searchParams) => {
       searchParams.set("type", event.target.value as string);
       searchParams.set("page", "1");

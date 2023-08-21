@@ -1,6 +1,5 @@
 import React from "react";
 import { episodeTypes } from "./types";
-import "./episodes-card.scss";
 
 interface EpisodeCardProps {
   episode: episodeTypes;
@@ -8,7 +7,7 @@ interface EpisodeCardProps {
 
 const EpisodeCard: React.FC<EpisodeCardProps> = ({ episode }) => {
   return (
-    <div className="episodes-card">
+    <div className="section-card">
       <h2>{episode.name}</h2>
       <p>{episode.air_date}</p>
       <p>{episode.episode}</p>

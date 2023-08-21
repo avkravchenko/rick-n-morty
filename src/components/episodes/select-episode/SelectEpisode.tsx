@@ -10,12 +10,10 @@ interface SelectEpisodeProps {
 }
 
 const SelectEpisode: React.FC<SelectEpisodeProps> = ({ totalCount }) => {
-  //const [episode, setEpisode] = useState<string>("");
   const [searchParams, setSearchParams] = useSearchParams();
   const episode: string = searchParams.get("episode") ?? "";
 
   const handleChange = (event: SelectChangeEvent) => {
-    //setEpisode(event.target.value as string);
     setSearchParams((searchParams) => {
       searchParams.set("episode", event.target.value as string);
       searchParams.delete("name");

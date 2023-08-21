@@ -5,12 +5,12 @@ import { getAllEpisodes } from "../../api/getAllEpisodes";
 import EpisodeCard from "./EpisodeCard";
 import Pagination from "@mui/material/Pagination";
 import { episodeTypes } from "./types";
-import "./episodes.scss";
 import SelectEpisode from "./select-episode/SelectEpisode";
 import CircularProgress from "@mui/material/CircularProgress";
-import Search from "../sidebar/search-bar/Search";
+import Search from "../search-bar/Search";
 import { allEpisodes } from "./allEpisodes";
 import Clear from "../clear/Clear";
+import "../../common-styles/common-styles.scss";
 
 const Episodes: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -76,11 +76,11 @@ const Episodes: React.FC = () => {
   }
 
   return (
-    <div className="episodes-wrapper">
+    <div className="section-wrapper">
       <Search />
       <SelectEpisode totalCount={allEpisodes} />
       <Clear name={name} episode={episode} />
-      <div className="episodes">
+      <div className="section-results">
         {data?.results.map((episode: episodeTypes) => (
           <Link key={episode.id} to={`/episodes/${episode.id}`}>
             <EpisodeCard episode={episode} />

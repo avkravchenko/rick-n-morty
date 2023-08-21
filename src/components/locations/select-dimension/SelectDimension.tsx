@@ -7,17 +7,11 @@ import { useSearchParams } from "react-router-dom";
 import { allLocationTypes } from "../allLocationTypes";
 import { allLocationDimensions } from "../allLocationDimensions";
 
-/* interface SelectEpisodeProps {
-  totalCount: string[];
-} */
-
-const SelectDimension: React.FC /* <SelectEpisodeProps> */ = () => {
-  //const [episode, setEpisode] = useState<string>("");
+const SelectDimension: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dimension: string = searchParams.get("dimension") ?? "";
 
   const handleChange = (event: SelectChangeEvent) => {
-    //setEpisode(event.target.value as string);
     setSearchParams((searchParams) => {
       searchParams.set("dimension", event.target.value as string);
       searchParams.set("page", "1");

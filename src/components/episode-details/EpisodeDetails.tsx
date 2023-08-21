@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getOneEpisode } from "../../api/getOneEpisode";
 import { characterTypes } from "../results/types";
 import Card from "../card/Card";
-import "./episode-details.scss";
 
 const EpisodeDetails: React.FC = () => {
   const { id } = useParams();
@@ -26,11 +25,11 @@ const EpisodeDetails: React.FC = () => {
     return <p>Error loading data</p>;
   }
   return (
-    <div className="episode-details">
+    <div className="section-details">
       <h2>{data?.originalData.name}</h2>
       <p>Air date: {data?.originalData.air_date}</p>
       <p>Episode: {data?.originalData.episode}</p>
-      <div className="episode-chars">
+      <div className="section-chars">
         {data?.characters.map((char: characterTypes) => (
           <Link
             key={char.id}
