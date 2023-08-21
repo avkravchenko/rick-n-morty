@@ -1,16 +1,18 @@
 .welcome-page {
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+  min-height: 80vh;
+  gap: 1.5rem;
 
   h1 {
     font-size: 3em;
   }
   .welcome-page__fancy-text {
+    line-height: 2.5rem;
     background: linear-gradient(
       to right top,
       #0468ff,
