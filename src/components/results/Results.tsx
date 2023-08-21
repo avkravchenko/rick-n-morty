@@ -18,6 +18,10 @@ const Results: React.FC = () => {
   const page: string = searchParams.get("page") ?? "1";
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     setSearchParams((searchParams) => {
       searchParams.set("page", value.toString());
       return searchParams;
