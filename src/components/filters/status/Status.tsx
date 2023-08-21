@@ -1,9 +1,8 @@
 import React from "react";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useSearchParams } from "react-router-dom";
 
 const Status: React.FC = () => {
@@ -11,35 +10,35 @@ const Status: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const status: string = searchParams.get("status") || "";
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: SelectChangeEvent) => {
     setSearchParams((searchParams) => {
       searchParams.set("status", event.target.value);
       return searchParams;
     });
   };
 
+  const renderMenuItems = () =>
+    statusArr.map((item, index) => (
+      <MenuItem key={item + index} value={item}>
+        {item}
+      </MenuItem>
+    ));
+
   return (
     <div>
-      <form>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Status</FormLabel>
-          <RadioGroup
-            aria-label="status"
-            name="status"
-            value={status}
-            onChange={handleChange}
-          >
-            {statusArr.map((item, index) => (
-              <FormControlLabel
-                key={item + index}
-                value={item}
-                control={<Radio />}
-                label={item}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-      </form>
+      <FormControl fullWidth>
+        <InputLabel id="status-select-label">Select Status</InputLabel>
+        <Select
+          labelId="status-select-label"
+          id="species-select"
+          value={status}
+          label="Select Status"
+          onChange={handleChange}
+          style={{ width: "150px" }}
+        >
+          {renderMenuItems()}
+        </Select>
+      </FormControl>
     </div>
   );
 };

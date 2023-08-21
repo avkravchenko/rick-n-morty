@@ -1,10 +1,12 @@
 .wrapper__sidebar {
-  padding-left: 1rem;
   text-align: center;
   .sidebar {
-    margin-top: 3rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
+    justify-content: center;
     gap: 3rem;
+    margin-top: 3rem;
+    padding: 1rem;
   }
 }

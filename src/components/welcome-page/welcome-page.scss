@@ -1,0 +1,26 @@
+.welcome-page {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  h1 {
+    font-size: 3em;
+  }
+  .welcome-page__fancy-text {
+    background: linear-gradient(
+      to right top,
+      #0468ff,
+      #0096ff,
+      #00b8ff,
+      #00d4ee,
+      #12ebd3
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}

@@ -3,6 +3,7 @@ import "./sidebar.scss";
 import Status from "../filters/status/Status";
 import Gender from "../filters/gender/Gender";
 import Species from "../filters/species/Species";
+import Clear from "../clear/Clear";
 
 const SideBar = () => {
   return (
@@ -13,6 +14,12 @@ const SideBar = () => {
         <Gender />
         <Species />
       </div>
+      <Clear
+        name={"name"}
+        status={"status"}
+        gender={"gender"}
+        species={"species"}
+      />
     </div>
   );
 };

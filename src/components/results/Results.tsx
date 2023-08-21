@@ -56,7 +56,6 @@ const Results: React.FC = () => {
 
   return (
     <div className="results-wrapper">
-      <Clear name={name} status={status} gender={gender} species={species} />
       <div className="results">
         {data?.results.map((char: characterTypes) => (
           <Link

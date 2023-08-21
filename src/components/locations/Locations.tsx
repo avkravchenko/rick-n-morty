@@ -39,7 +39,7 @@ const Locations: React.FC = () => {
   }
 
   if (isError) {
-    return <div>Error loading episodes</div>;
+    return <div>Error loading locations</div>;
   }
 
   if (isFetching) {
