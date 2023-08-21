@@ -13,6 +13,7 @@ import EpisodeDetails from "./components/episode-details/EpisodeDetails";
 import Locations from "./components/locations/Locations";
 import LocationDetails from "./components/location-details/LocationDetails";
 import WelcomePage from "./components/welcome-page/WelcomePage";
+import NotFound from "./components/not-found/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -39,8 +40,9 @@ function App() {
           <Route path="/episodes/:id" element={<EpisodeDetails />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/locations/:id" element={<LocationDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </div>
     </QueryClientProvider>
   );

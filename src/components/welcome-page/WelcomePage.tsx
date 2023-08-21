@@ -10,9 +10,10 @@ const WelcomePage: React.FC = () => {
       </h1>
       <h2>
         Here you can find all information about <br />
-        <Link to={"/characters"}>characters</Link>,{" "}
-        <Link to={"/episodes"}>episodes</Link> and{" "}
-        <Link to={"/locations"}>locations</Link>.
+        <Link to={"/characters"}>characters</Link>
+        <br />
+        <Link to={"/episodes"}>episodes</Link> <br />
+        <Link to={"/locations"}>locations</Link>
       </h2>
     </div>
   );
