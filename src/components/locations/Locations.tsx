@@ -42,10 +42,6 @@ const Locations: React.FC = () => {
     return <div>Error loading locations</div>;
   }
 
-  if (isFetching) {
-    return <CircularProgress />;
-  }
-
   console.log(data);
   return (
     <div className="section-wrapper">
