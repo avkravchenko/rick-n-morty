@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getAllLocations } from "../../api/getAllLocations";
 import { Link, useSearchParams } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
