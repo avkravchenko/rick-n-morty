@@ -54,6 +54,7 @@ const Locations: React.FC = () => {
         <SelectType />
         <SelectDimension />
       </div>
+      {isFetching ? <CircularProgress /> : null}
       <Clear name={name} type={type} dimension={dimension} />
       <div className="section-results">
         {data?.results.map((location: locationTypes) => (

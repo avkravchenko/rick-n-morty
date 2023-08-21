@@ -24,7 +24,7 @@ const Results: React.FC = () => {
     });
   };
 
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError, isFetching } = useQuery(
     ["characters", name, status, gender, species, page],
     () => getAllCharacters(name, status, gender, species, page),
     {
@@ -51,30 +51,34 @@ const Results: React.FC = () => {
   }
 
   if (isError) {
+    searchParams.delete("name");
     return <p>Error loading data</p>;
   }
 
   return (
-    <div className="results-wrapper">
-      <div className="results">
-        {data?.results.map((char: characterTypes) => (
-          <Link
-            key={char.id}
-            to={`/characters/${char.id}`}
-            className="card-link"
-          >
-            <Card char={char} />
-          </Link>
-        ))}
-      </div>
+    <>
+      {isFetching ? <CircularProgress /> : null}
+      <div className="results-wrapper">
+        <div className="results">
+          {data?.results.map((char: characterTypes) => (
+            <Link
+              key={char.id}
+              to={`/characters/${char.id}`}
+              className="card-link"
+            >
+              <Card char={char} />
+            </Link>
+          ))}
+        </div>
 
-      <Pagination
-        count={data?.info.pages}
-        page={+page}
-        onChange={handleChange}
-        color="primary"
-      />
-    </div>
+        <Pagination
+          count={data?.info.pages}
+          page={+page}
+          onChange={handleChange}
+          color="primary"
+        />
+      </div>
+    </>
   );
 };
 

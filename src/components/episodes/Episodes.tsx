@@ -18,7 +18,7 @@ const Episodes: React.FC = () => {
   const name: string = searchParams.get("name") ?? "";
   const episode: string = searchParams.get("episode") ?? "";
 
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError, isFetching } = useQuery(
     ["episodes", page, name, episode],
     () => getAllEpisodes(page, name, episode),
     {
@@ -72,6 +72,7 @@ const Episodes: React.FC = () => {
   }
 
   if (isError) {
+    searchParams.delete("name");
     return <div>Error loading episodes</div>;
   }
 
@@ -80,6 +81,7 @@ const Episodes: React.FC = () => {
       <Search />
       <SelectEpisode totalCount={allEpisodes} />
       <Clear name={name} episode={episode} />
+      {isFetching ? <CircularProgress /> : null}
       <div className="section-results">
         {data?.results.map((episode: episodeTypes) => (
           <Link key={episode.id} to={`/episodes/${episode.id}`}>
